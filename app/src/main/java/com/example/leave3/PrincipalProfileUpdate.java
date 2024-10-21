@@ -65,9 +65,9 @@ public class PrincipalProfileUpdate extends Activity
         }
 
 
-        String name = "",repassword="",password="",gender="",contect="",quali="",exp="";
+        String name = "",repassword="",password="",gender="",contact="",quali="",exp="";
 
-        String sel[]={ld.NAME_COL,ld.PASSWORD_COL,ld.GENDER_COL,ld.CONTECTNO_COL,ld.QUALIFICATION_COL,ld.EXPERIENCE_COL};
+        String sel[]={ld.NAME_COL,ld.PASSWORD_COL,ld.GENDER_COL,ld.contactNO_COL,ld.QUALIFICATION_COL,ld.EXPERIENCE_COL};
         String sel_args[]={p_email};
         String where=ld.EMAIL_COL+" = ? ";
         Cursor c=sd.query(LeaveManagementDatabase.PRINCIPAL_TABLE,sel,where,sel_args,null,null,null);
@@ -76,7 +76,7 @@ public class PrincipalProfileUpdate extends Activity
             name=c.getString(0);
             password=c.getString(1);
             gender=c.getString(2);
-            contect=c.getString(3);
+            contact=c.getString(3);
             quali=c.getString(4);
             exp=c.getString(5);
         }
@@ -85,7 +85,7 @@ public class PrincipalProfileUpdate extends Activity
         d_name.setText(name);
         d_pass.setText(password);
         d_repass.setText(password);
-        d_phone.setText(contect);
+        d_phone.setText(contact);
         d_quali.setText(quali);
         d_exp.setText(exp);
 
@@ -99,14 +99,14 @@ public class PrincipalProfileUpdate extends Activity
         }
     }
 
-    String u_name,u_password,u_repassword,u_contect_no,u_qualification,u_exp;
+    String u_name,u_password,u_repassword,u_contact_no,u_qualification,u_exp;
 
     public void update(View v)
     {
         u_name = d_name.getText().toString().trim();
         u_password = d_pass.getText().toString().trim();
         u_repassword = d_repass.getText().toString().trim();
-        u_contect_no = d_phone.getText().toString().trim();
+        u_contact_no = d_phone.getText().toString().trim();
         u_qualification = d_quali.getText().toString().trim();
         u_exp = d_exp.getText().toString().trim();
 
@@ -114,7 +114,7 @@ public class PrincipalProfileUpdate extends Activity
             if (validatePassword(u_password)) {
                 if (validateReassword(u_repassword)) {
                     if (validateGender(gender)) {
-                        if (validateContectNo(u_contect_no)) {
+                        if (validatecontactNo(u_contact_no)) {
                             if (validateQualification(u_qualification)) {
                                 if (validateExp(u_exp))
                                 {
@@ -126,17 +126,17 @@ public class PrincipalProfileUpdate extends Activity
                                     //   boolean result=bit.compress(Bitmap.CompressFormat.JPEG,100,bout);
                                     //  if(result)
                                     //  {
-                                    double cno = Double.parseDouble(u_contect_no);
+                                    double cno = Double.parseDouble(u_contact_no);
                                     //   byte image[] = bout.toByteArray();
                                     ContentValues cv = new ContentValues();
                                     cv.put(ld.NAME_COL, u_name);
                                     cv.put(ld.PASSWORD_COL, u_password);
                                     cv.put(ld.GENDER_COL, gender);
-                                    cv.put(ld.CONTECTNO_COL, cno);
+                                    cv.put(ld.contactNO_COL, cno);
                                     cv.put(ld.QUALIFICATION_COL, u_qualification);
                                     cv.put(ld.EXPERIENCE_COL, u_exp);
                                     //  cv.put(ld.PHOTO_COL,image);
-                                    //String wherArgs[]={ld.NAME_COL,ld.PASSWORD_COL,ld.GENDER_COL,ld.CONTECTNO_COL,ld.QUALIFICATION_COL,ld.EXPERIENCE_COL};
+                                    //String wherArgs[]={ld.NAME_COL,ld.PASSWORD_COL,ld.GENDER_COL,ld.contactNO_COL,ld.QUALIFICATION_COL,ld.EXPERIENCE_COL};
                                     String wherArgs[]={p_email};
                                     String whereClause=ld.EMAIL_COL+"= ?";
 
@@ -212,12 +212,12 @@ public class PrincipalProfileUpdate extends Activity
         }
     }
 
-    public boolean validateContectNo(String u_contect_no)
+    public boolean validatecontactNo(String u_contact_no)
     {
         //EditText et_ame,et_pass,et_email,et_contact,et_qualification,et_experience;
-        if(u_contect_no.isEmpty())
+        if(u_contact_no.isEmpty())
         {
-            d_phone.setError("Contect no should be filled");
+            d_phone.setError("contact no should be filled");
             d_phone.requestFocus();
             return false;
         }else{

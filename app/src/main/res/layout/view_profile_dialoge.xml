@@ -39,7 +39,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:text="Contect No"
+        android:text="contact No"
         android:ems="40"
         android:textColor="@color/text_color"
         android:textSize="20sp" />

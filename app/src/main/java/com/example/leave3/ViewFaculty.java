@@ -31,8 +31,8 @@ public class ViewFaculty extends AppCompatActivity {
     ArrayList al_can,al_ap,al_pen;
     LeaveManagementDatabase ld;
     SQLiteDatabase sd;
-    String d_email,d_name,d_contect,d_gender,d_exp;
-    String keys[]={"name","contectno"};
+    String d_email,d_name,d_contact,d_gender,d_exp;
+    String keys[]={"name","contactno"};
     int ids[]={R.id.viewtv1,R.id.viewtv2};
     String pass1="dummy",pass2="dummy",pass_hod="dummy";
     String text="";
@@ -83,13 +83,13 @@ public class ViewFaculty extends AppCompatActivity {
                 HashMap hm = (HashMap) al_pen.get(position);
                 text = (String) hm.get(keys[0]);
 
-                String cols[] = {LeaveManagementDatabase.NAME_COL, LeaveManagementDatabase.CONTECTNO_COL, LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.GENDER_COL, LeaveManagementDatabase.EXPERIENCE_COL};
+                String cols[] = {LeaveManagementDatabase.NAME_COL, LeaveManagementDatabase.contactNO_COL, LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.GENDER_COL, LeaveManagementDatabase.EXPERIENCE_COL};
                 String sel_args[] = {text};
                 String sel = LeaveManagementDatabase.EMAIL_COL + " = ? ";
                 Cursor c = sd.query(LeaveManagementDatabase.FACULTY_TABLE, cols, sel, sel_args, null, null, null);
                 if (c.moveToFirst()) {
                     d_name = c.getString(0);
-                    d_contect = c.getString(1);
+                    d_contact = c.getString(1);
                     d_email = c.getString(2);
                     d_gender = c.getString(3);
                     d_exp = c.getString(4);
@@ -140,7 +140,7 @@ public class ViewFaculty extends AppCompatActivity {
                     ImageButton iv_cancle = (ImageButton) d.findViewById(R.id.btn_wrong);
 
                     tv_name.setText(d_name);
-                    tv_cno.setText(d_contect);
+                    tv_cno.setText(d_contact);
                     tv_email.setText(d_email);
                     tv_gender.setText(d_gender);
                     tv_quali.setText(d_exp);
@@ -190,7 +190,7 @@ public class ViewFaculty extends AppCompatActivity {
                     ImageButton iv_cancle = (ImageButton) d.findViewById(R.id.btn_wrong);
 
                     tv_name.setText(d_name);
-                    tv_cno.setText(d_contect);
+                    tv_cno.setText(d_contact);
                     tv_email.setText(d_email);
                     tv_gender.setText(d_gender);
                     tv_quali.setText(d_exp);
@@ -254,7 +254,7 @@ public class ViewFaculty extends AppCompatActivity {
     public void showPending()
     {
         al_pen = new ArrayList();
-        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.CONTECTNO_COL};
+        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.contactNO_COL};
         String sel = ld.STATUS_COL + " = ?";
         String sel_ags[] = {"pending"};
         Cursor c = sd.query(ld.FACULTY_TABLE, cols, sel, sel_ags, null, null, null);
@@ -265,11 +265,11 @@ public class ViewFaculty extends AppCompatActivity {
             do {
                 String name   =c.getString(0);
                 //profile_name.add(name);
-                String  contectno=c.getString(1);
-                //profile_cno.add(contectno);
+                String  contactno=c.getString(1);
+                //profile_cno.add(contactno);
                 HashMap hm= new HashMap();
                 hm.put(keys[0],name);
-                hm.put(keys[1],contectno);
+                hm.put(keys[1],contactno);
                 al_pen.add(hm);
             } while (c.moveToNext());
         }
@@ -280,7 +280,7 @@ public class ViewFaculty extends AppCompatActivity {
     public void showApprove()
     {
         al_ap = new ArrayList();
-        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.CONTECTNO_COL};
+        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.contactNO_COL};
         String sel = ld.STATUS_COL + " = ?";
         String sel_ags[] = {"approved"};
         Cursor c = sd.query(ld.FACULTY_TABLE, cols, sel, sel_ags, null, null, null);
@@ -291,11 +291,11 @@ public class ViewFaculty extends AppCompatActivity {
             do {
                 String name   =c.getString(0);
 
-                String  contectno=c.getString(1);
+                String  contactno=c.getString(1);
 
                 HashMap hm= new HashMap();
                 hm.put(keys[0],name);
-                hm.put(keys[1],contectno);
+                hm.put(keys[1],contactno);
                 al_ap.add(hm);
 
             } while (c.moveToNext());
@@ -309,7 +309,7 @@ public class ViewFaculty extends AppCompatActivity {
     {
 
         al_can = new ArrayList();
-        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.CONTECTNO_COL};
+        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.contactNO_COL};
         String sel = ld.STATUS_COL + " = ?";
         String sel_ags[] = {"cancle"};
         Cursor c = sd.query(ld.FACULTY_TABLE, cols, sel, sel_ags, null, null, null);
@@ -319,10 +319,10 @@ public class ViewFaculty extends AppCompatActivity {
         if (res) {
             do {
                 String name   =c.getString(0);
-                String  contectno=c.getString(1);
+                String  contactno=c.getString(1);
                 HashMap hm= new HashMap();
                 hm.put(keys[0],name);
-                hm.put(keys[1],contectno);
+                hm.put(keys[1],contactno);
                 al_can.add(hm);
             } while (c.moveToNext());
         }

@@ -123,7 +123,7 @@ public class WelcomeHod extends AppCompatActivity
         setContentView(R.layout.leave_application_list);
         ListView lv=(ListView)d.findViewById(R.id.leaveAppList);
 
-        String keys[]={"name","contectno"};
+        String keys[]={"name","contactno"};
         int ids[]={R.id.viewtv1,R.id.viewtv2};
         ArrayList al=new ArrayList();
         String cols[]={ld.EMAIL_COL,ld.DEPARTMENT_COL};

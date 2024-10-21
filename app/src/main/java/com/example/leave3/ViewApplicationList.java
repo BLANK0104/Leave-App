@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class ViewApplicationList extends Activity {
 
     ListView pendingAppList;
-    String keys[]={"name","contectno"};
+    String keys[]={"name","contactno"};
     int ids[]={R.id.viewtv1,R.id.viewtv2};
     ArrayList pendingAppArrayList;
     LeaveManagementDatabase ld;

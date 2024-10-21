@@ -111,7 +111,7 @@
                 android:inputType="phone"
                 android:textColor="@color/text_color"
                 android:maxLength="10"
-                android:hint="Contect No"/>
+                android:hint="contact No"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

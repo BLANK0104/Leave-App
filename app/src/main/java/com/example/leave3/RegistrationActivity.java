@@ -28,7 +28,7 @@ public class RegistrationActivity extends AppCompatActivity {
     boolean flag=false;
     EditText et_ame,et_pass,et_email,et_contact,et_qualification,et_experience;
     Spinner user_type;
-    String name,email ,password,contect_no,qualification,exp,gender="";
+    String name,email ,password,contact_no,qualification,exp,gender="";
     LeaveManagementDatabase ld;
     SQLiteDatabase sd;
 
@@ -91,7 +91,7 @@ public class RegistrationActivity extends AppCompatActivity {
         name = et_ame.getText().toString().trim();
         password = et_pass.getText().toString().trim();
         email = et_email.getText().toString().trim();
-        contect_no = et_contact.getText().toString().trim();
+        contact_no = et_contact.getText().toString().trim();
         qualification = et_qualification.getText().toString().trim();
         exp= et_experience.getText().toString().trim();
         type=user_type.getSelectedItem().toString();
@@ -100,17 +100,17 @@ public class RegistrationActivity extends AppCompatActivity {
             if(validateEmail(email)) {
                 if(validatePassword(password)) {
                     if(validateGender(gender)) {
-                        if(validateContectNo(contect_no)) {
+                        if(validatecontactNo(contact_no)) {
                             if(validateQualification(qualification)) {
                                 if(validateExp(exp)) {
-                                    double cno=Double.parseDouble(contect_no);
+                                    double cno=Double.parseDouble(contact_no);
                                     String status="pending";
                                     ContentValues cv=new ContentValues();
                                     cv.put(ld.NAME_COL,name);
                                     cv.put(ld.EMAIL_COL,email);
                                     cv.put(ld.PASSWORD_COL,password);
                                     cv.put(ld.GENDER_COL,gender);
-                                    cv.put(ld.CONTECTNO_COL,cno);
+                                    cv.put(ld.contactNO_COL,cno);
                                     cv.put(ld.QUALIFICATION_COL,qualification);
                                     cv.put(ld.EXPERIENCE_COL,exp);
                                     cv.put(ld.STATUS_COL,status);
@@ -230,9 +230,9 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
-    public boolean validateContectNo(String contect_no) {
-        if(contect_no.isEmpty()) {
-            et_contact.setError("Contect no should be filled");
+    public boolean validatecontactNo(String contact_no) {
+        if(contact_no.isEmpty()) {
+            et_contact.setError("contact no should be filled");
             et_contact.requestFocus();
             return false;
         } else {

@@ -36,8 +36,8 @@ public class ViewHod extends Activity {
     ListView approvedlv, pendinglv, canclelv;
     ArrayList al, profile_name, profile_cno;
     ArrayList al_can, al_ap, al_pen;
-    String profile_n[], profile_contect[];
-    String keys[] = {"name", "contectno"};
+    String profile_n[], profile_contact[];
+    String keys[] = {"name", "contactno"};
     int ids[] = {R.id.viewtv1, R.id.viewtv2};
     String pass1 = "dummy", pass2 = "dummy";
 
@@ -73,17 +73,17 @@ public class ViewHod extends Activity {
         pendinglv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String f_name = "a", f_email = "a", f_gender = "a", f_quali = "a", f_contect = "a";
+                String f_name = "a", f_email = "a", f_gender = "a", f_quali = "a", f_contact = "a";
 
                 HashMap hm1 = (HashMap) al_pen.get(position);
                 final String text = (String) hm1.get(keys[0]);
-                String cols[] = {LeaveManagementDatabase.NAME_COL, LeaveManagementDatabase.CONTECTNO_COL, LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.GENDER_COL, LeaveManagementDatabase.EXPERIENCE_COL};
+                String cols[] = {LeaveManagementDatabase.NAME_COL, LeaveManagementDatabase.contactNO_COL, LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.GENDER_COL, LeaveManagementDatabase.EXPERIENCE_COL};
                 String sel = LeaveManagementDatabase.EMAIL_COL + " = ? ";
                 String sel_args[] = {text};
                 Cursor c = sd.query(LeaveManagementDatabase.HOD_TABLE, cols, sel, sel_args, null, null, null);
                 if (c.moveToFirst()) {
                     f_name = c.getString(0);
-                    f_contect = c.getString(1);
+                    f_contact = c.getString(1);
                     f_email = c.getString(2);
                     f_gender = c.getString(3);
                     f_quali = c.getString(4);
@@ -126,7 +126,7 @@ public class ViewHod extends Activity {
                     ImageButton iv_cancle = (ImageButton) d.findViewById(R.id.btn_wrong);
 
                     tv_name.setText(f_name);
-                    tv_cno.setText(f_contect);
+                    tv_cno.setText(f_contact);
                     tv_email.setText(f_email);
                     tv_gender.setText(f_gender);
                     tv_quali.setText(f_quali);
@@ -176,7 +176,7 @@ public class ViewHod extends Activity {
 
     public void showPending() {
         al_pen = new ArrayList();
-        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.CONTECTNO_COL};
+        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.contactNO_COL};
         String sel = ld.STATUS_COL + " = ?";
         String sel_ags[] = {"pending"};
         Cursor c = sd.query(ld.FACULTY_TABLE, cols, sel, sel_ags, null, null, null);
@@ -185,10 +185,10 @@ public class ViewHod extends Activity {
         if (res) {
             do {
                 String name = c.getString(0);
-                String contectno = c.getString(1);
+                String contactno = c.getString(1);
                 HashMap hm = new HashMap();
                 hm.put(keys[0], name);
-                hm.put(keys[1], contectno);
+                hm.put(keys[1], contactno);
                 al_pen.add(hm);
             } while (c.moveToNext());
         }
@@ -198,7 +198,7 @@ public class ViewHod extends Activity {
 
     public void showApprove() {
         al_ap = new ArrayList();
-        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.CONTECTNO_COL};
+        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.contactNO_COL};
         String sel = ld.STATUS_COL + " = ?";
         String sel_ags[] = {"approved"};
         Cursor c = sd.query(ld.FACULTY_TABLE, cols, sel, sel_ags, null, null, null);
@@ -207,10 +207,10 @@ public class ViewHod extends Activity {
         if (res) {
             do {
                 String name = c.getString(0);
-                String contectno = c.getString(1);
+                String contactno = c.getString(1);
                 HashMap hm = new HashMap();
                 hm.put(keys[0], name);
-                hm.put(keys[1], contectno);
+                hm.put(keys[1], contactno);
                 al_ap.add(hm);
             } while (c.moveToNext());
         }
@@ -221,7 +221,7 @@ public class ViewHod extends Activity {
 
     public void showCancle() {
         al_can = new ArrayList();
-        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.CONTECTNO_COL};
+        String cols[] = {LeaveManagementDatabase.EMAIL_COL, LeaveManagementDatabase.contactNO_COL};
         String sel = ld.STATUS_COL + " = ?";
         String sel_ags[] = {"cancle"};
         Cursor c = sd.query(ld.FACULTY_TABLE, cols, sel, sel_ags, null, null, null);
@@ -231,10 +231,10 @@ public class ViewHod extends Activity {
         if (res) {
             do {
                 String name = c.getString(0);
-                String contectno = c.getString(1);
+                String contactno = c.getString(1);
                 HashMap hm = new HashMap();
                 hm.put(keys[0], name);
-                hm.put(keys[1], contectno);
+                hm.put(keys[1], contactno);
                 al_can.add(hm);
             } while (c.moveToNext());
         }

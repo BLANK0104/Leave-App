@@ -6,9 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-/**
- * Created by Anuj on 22-Aug-17.
- */
 
 public class LeaveManagementDatabase extends SQLiteOpenHelper
 {
@@ -25,7 +22,7 @@ public class LeaveManagementDatabase extends SQLiteOpenHelper
     public  static final  String EMAIL_COL="EMAIL";
     public  static final  String PASSWORD_COL="PASSWORD";
     public  static final  String GENDER_COL="GENDER";
-    public  static final  String CONTECTNO_COL="CONTECT_NO";
+    public  static final  String contactNO_COL="contact_NO";
     public  static final  String QUALIFICATION_COL="QULIFICATION";
     public  static final  String EXPERIENCE_COL="EXPERIENCE";
     public  static final  String STATUS_COL="STATUS";
@@ -50,13 +47,13 @@ public class LeaveManagementDatabase extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        String query="create table "+PRINCIPAL_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+CONTECTNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
+        String query="create table "+PRINCIPAL_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
         db.execSQL(query);
 
-        String query1="create table "+HOD_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+CONTECTNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
+        String query1="create table "+HOD_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
         db.execSQL(query1);
 
-        String query2="create table "+FACULTY_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+CONTECTNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
+        String query2="create table "+FACULTY_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
         db.execSQL(query2);
 
         String query3="create table "+LEAVE_TABLE+" ( "+EMAIL_COL+" text Primary Key  ,"+DEPARTMENT_COL+" text,"+LEAVE_REASON_COL+" text,"+DATE_FROM_COL+" text,"+DATE_TO_COL+" text,"+STATUS_HOD_COL+" text,"+STATUS_PRINCIPAL_COL+" text)";

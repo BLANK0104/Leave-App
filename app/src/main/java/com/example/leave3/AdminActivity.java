@@ -60,7 +60,7 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void addPrincipal(View v)
+    public void addHOD(View v)
     {
 
         int count=getProfilesCount();
@@ -70,22 +70,22 @@ public class AdminActivity extends AppCompatActivity {
             i.putExtra("k1", flag);
             startActivity(i);
         }else{
-            Snackbar.make(v, "Not allowed ! Principal  have registered ", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(v, "Not allowed ! HOD  have registered ", Snackbar.LENGTH_LONG).show();
         }
-    }
-
-    public void viewHod(View v)
-    {
-
-
-        Intent i = new Intent(this,ViewHod.class);
-        i.putExtra("admin","adminAlert");
-        startActivity(i);
     }
 
     public void viewFaculty(View v)
     {
-        Intent i=new Intent(this ,ViewFaculty.class);
+
+
+        Intent i = new Intent(this,ViewFaculty.class);
+        i.putExtra("admin","adminAlert");
+        startActivity(i);
+    }
+
+    public void viewStudent(View v)
+    {
+        Intent i=new Intent(this ,ViewStudent.class);
         i.putExtra("admin","adminAlert");
         startActivity(i);
     }
@@ -95,7 +95,7 @@ public class AdminActivity extends AppCompatActivity {
     public int getProfilesCount()
     {
 
-        String countQuery = "SELECT  * FROM " + LeaveManagementDatabase.PRINCIPAL_TABLE;
+        String countQuery = "SELECT  * FROM " + LeaveManagementDatabase.HOD_TABLE;
 //        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = sd.rawQuery(countQuery, null);
         int cnt = cursor.getCount();

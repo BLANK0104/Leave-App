@@ -13,9 +13,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-public class HodProfileUpdate extends Activity
+public class HODProfileUpdate extends Activity
 {
-    String gender ,f_email,alert_f="";
+
+    String gender ,p_email,alert_f="";
     EditText d_name,d_pass, d_repass, d_phone,d_quali,d_exp;
     LeaveManagementDatabase ld;
     SQLiteDatabase sd;
@@ -56,7 +57,7 @@ public class HodProfileUpdate extends Activity
 
         try {
             Bundle b = i.getExtras();
-            f_email = b.getString("hemail");
+            p_email = b.getString("pemail");
 
         }catch(Exception e)
         {
@@ -67,7 +68,7 @@ public class HodProfileUpdate extends Activity
         String name = "",repassword="",password="",gender="",contact="",quali="",exp="";
 
         String sel[]={ld.NAME_COL,ld.PASSWORD_COL,ld.GENDER_COL,ld.contactNO_COL,ld.QUALIFICATION_COL,ld.EXPERIENCE_COL};
-        String sel_args[]={f_email};
+        String sel_args[]={p_email};
         String where=ld.EMAIL_COL+" = ? ";
         Cursor c=sd.query(LeaveManagementDatabase.HOD_TABLE,sel,where,sel_args,null,null,null);
         if(c.moveToFirst())
@@ -97,7 +98,6 @@ public class HodProfileUpdate extends Activity
             d_gender_female.setChecked(true);
         }
     }
-
 
     String u_name,u_password,u_repassword,u_contact_no,u_qualification,u_exp;
 
@@ -137,20 +137,20 @@ public class HodProfileUpdate extends Activity
                                     cv.put(ld.EXPERIENCE_COL, u_exp);
                                     //  cv.put(ld.PHOTO_COL,image);
                                     //String wherArgs[]={ld.NAME_COL,ld.PASSWORD_COL,ld.GENDER_COL,ld.contactNO_COL,ld.QUALIFICATION_COL,ld.EXPERIENCE_COL};
-                                    String wherArgs[]={f_email};
+                                    String wherArgs[]={p_email};
                                     String whereClause=ld.EMAIL_COL+"= ?";
 
                                     int res=sd.update(ld.HOD_TABLE,cv,whereClause,wherArgs);
                                     if(res!=0)
                                     {
                                         Toast.makeText(this,"Profile is Update",Toast.LENGTH_SHORT).show();
-                                        Intent i=new Intent(this,WelcomeFaculty.class);
-                                        i.putExtra("RESULT",f_email);
+                                        Intent i=new Intent(this,WelcomeHOD.class);
+                                        i.putExtra("RESULT",p_email);
                                         setResult(Activity.RESULT_OK,i);
                                         finish();
 
                                     }else{
-                                        Toast.makeText(this,"Error! Not Update Profile",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(this,"Error! Profile Update Failed",Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }

@@ -6,17 +6,16 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Approved HOD's"
+        android:text="Approved Student's"
         android:textAlignment="center"
         android:textColor="#2cb103"
         android:textSize="20sp"
         android:textStyle="bold"/>
 
     <ListView
-        android:id="@+id/lvApprovedHod"
+        android:id="@+id/lvApprovedStudent"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:divider="#228709"
@@ -24,34 +23,33 @@
         />
 
     <TextView
-        android:id="@+id/textView2"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pending HOD's"
+        android:text="Pending Student's"
         android:textAlignment="center"
         android:textColor="#eff707"
         android:textSize="20sp"
         android:textStyle="bold"/>
 
     <ListView
-        android:id="@+id/lvPendingHod"
+        android:id="@+id/lvPendingStudent"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:divider="#fae330"
         android:dividerHeight="2dp"/>
 
     <TextView
-        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancle HOD's"
+        android:text="Cancle Faculty's"
         android:textAlignment="center"
         android:textColor="#fc0314"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <ListView
-        android:id="@+id/lvCancleHod"
+        android:id="@+id/lvCancleStudent"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:divider="#ff1c32"

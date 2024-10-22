@@ -4,18 +4,18 @@
 
         <item>Select</item>
         <item>Admin</item>
-        <item>Principal</item>
-        <item>Head Of Department</item>
+        <item>HOD</item>
         <item>Faculty</item>
+        <item>Student</item>
     </array>
 
 
     <array name="loginType">
 
         <item>Select</item>
-        <item>Principal</item>
-        <item>Head Of Department</item>
+        <item>HOD</item>
         <item>Faculty</item>
+        <item>Student</item>
     </array>
 
     <array name="leaveReason">

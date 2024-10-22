@@ -18,16 +18,17 @@
 
         <activity android:name=".AdminActivity" android:exported="false" />
         <activity android:name=".RegistrationActivity" android:exported="false" />
-        <activity android:name=".WelcomePrincipal" android:exported="false" />
-        <activity android:name=".WelcomeHod" android:exported="false" />
+        <activity android:name=".WelcomeHOD" android:exported="false" />
         <activity android:name=".WelcomeFaculty" android:exported="false" />
+        <activity android:name=".WelcomeStudent" android:exported="false" />
+        <activity android:name=".ViewStudent" android:exported="false" />
         <activity android:name=".ViewFaculty" android:exported="false" />
-        <activity android:name=".ViewHod" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".StudentProfileUpdate" android:exported="false" />
+        <activity android:name=".HODProfileUpdate" android:exported="false" />
         <activity android:name=".FacultyProfileUpdate" android:exported="false" />
-        <activity android:name=".PrincipalProfileUpdate" android:exported="false" />
-        <activity android:name=".HodProfileUpdate" android:exported="false" />
         <activity android:name=".ViewApplicationList" android:exported="false" />
+        <activity android:name=".TakeLeaveActivity" android:exported="false" />
 
     </application>
 

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:ems="40"
-        android:text="Head of Department"
+        android:text="Faculty"
         android:layout_margin="40dp"
         android:textColor="@color/text_color"
         android:background="@color/button_color"/>
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="40dp"
         android:background="@color/button_color"
-        android:text="Faculty"
+        android:text="Student"
         android:textAllCaps="false"
         android:textColor="@color/text_color" />
 </LinearLayout>

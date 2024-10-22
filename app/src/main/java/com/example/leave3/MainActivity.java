@@ -78,34 +78,34 @@ public class MainActivity extends Activity {
                             userName.requestFocus();
                         }
                     }
-                    else if(type.equals("Principal"))
+                    else if(type.equals("HOD"))
                     {
                         String cols[]={ld.PASSWORD_COL,ld.STATUS_COL};
                         String sel=ld.EMAIL_COL+" = ?";
                         String sel_ags[]={uname};
-                        Cursor c=sd.query(ld.PRINCIPAL_TABLE,cols,sel,sel_ags,null,null,null);
+                        Cursor c=sd.query(ld.HOD_TABLE,cols,sel,sel_ags,null,null,null);
                         if(c.moveToFirst())
                         {
                             String password=c.getString(0);
                             String status=c.getString(1);
                             if(upass.equals(password))
                             {
-                                Intent i = new Intent(this, WelcomePrincipal.class);
+                                Intent i = new Intent(this, WelcomeHOD.class);
                                 i.putExtra("kname", uname);
                                 startActivity(i);
                             }
                         }else{
-                        Snackbar.make(v,"invelid crediantial for Principal",Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(v,"invelid crediantial for HOD",Snackbar.LENGTH_LONG).show();
                         userName.requestFocus();
                         }
                     }
 
-                    else if(type.equals("Head Of Department"))
+                    else if(type.equals("Faculty"))
                     {
                         String cols[]={ld.PASSWORD_COL,ld.STATUS_COL};
                         String sel=ld.EMAIL_COL+" = ?";
                         String sel_ags[]={uname};
-                        Cursor c=sd.query(ld.HOD_TABLE,cols,sel,sel_ags,null,null,null);
+                        Cursor c=sd.query(ld.Faculty_TABLE,cols,sel,sel_ags,null,null,null);
                         if(c.moveToFirst())
                         {
                             String password=c.getString(0);
@@ -125,7 +125,7 @@ public class MainActivity extends Activity {
 
                                 }else{
 
-                                    Intent i = new Intent(this, WelcomeHod.class);
+                                    Intent i = new Intent(this, WelcomeFaculty.class);
                                     i.putExtra("kname", uname);
 
                                     startActivity(i);
@@ -133,17 +133,17 @@ public class MainActivity extends Activity {
                             }
                         }else
                             {
-                            Snackbar.make(v,"invelid crediantial for Head Of Department",Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(v,"invelid crediantial for Faculty",Snackbar.LENGTH_LONG).show();
                             userName.requestFocus();
                         }
                     }
 
-                    else if(type.equals("Faculty"))
+                    else if(type.equals("Student"))
                     {
                         String cols[]={ld.PASSWORD_COL};
                         String sel=ld.EMAIL_COL+" = ?";
                         String sel_ags[]={uname};
-                        Cursor c=sd.query(ld.FACULTY_TABLE,cols,sel,sel_ags,null,null,null);
+                        Cursor c=sd.query(ld.Student_TABLE,cols,sel,sel_ags,null,null,null);
                         if(c.moveToFirst())
 
                         {   String password=c.getString(0);
@@ -151,12 +151,12 @@ public class MainActivity extends Activity {
                             if(upass.equals(password))
                             {
                                 finish();
-                                Intent i = new Intent(this, WelcomeFaculty.class);
+                                Intent i = new Intent(this, WelcomeStudent.class);
                                 i.putExtra("kname", uname);
                                 startActivity(i);
                             }
                         }
-                        Snackbar.make(v,"invelid crediantial for Faculty",Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(v,"invelid crediantial for Student",Snackbar.LENGTH_LONG).show();
                         userName.requestFocus();
                     }
 

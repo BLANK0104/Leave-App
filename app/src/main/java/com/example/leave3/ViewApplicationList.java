@@ -26,10 +26,10 @@ public class ViewApplicationList extends Activity {
     ArrayList pendingAppArrayList;
     LeaveManagementDatabase ld;
     SQLiteDatabase sd;
-    String principal_profile="dummy";
-    String principal_alert="dummy";
-    String hod_profie="dummy";
-    String hod_alert="dummy";
+    String HOD_profile="dummy";
+    String HOD_alert="dummy";
+    String Faculty_profie="dummy";
+    String Faculty_alert="dummy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,38 +45,38 @@ public class ViewApplicationList extends Activity {
         try {
             Intent intent = getIntent();
             Bundle b = intent.getExtras();
-            hod_profie = b.getString("hodAlert1");
-            hod_alert=b.getString("hodAlert2");
-            principal_profile = b.getString("principalAlert1");
-            principal_alert = b.getString("principalAlert2");
+            Faculty_profie = b.getString("FacultyAlert1");
+            Faculty_alert=b.getString("FacultyAlert2");
+            HOD_profile = b.getString("HODAlert1");
+            HOD_alert = b.getString("HODAlert2");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(principal_alert==null)
+        if(HOD_alert==null)
         {
-            principal_alert="dummy";
+            HOD_alert="dummy";
         }
 
-        if(principal_profile==null)
+        if(HOD_profile==null)
         {
-            principal_profile="dummy";
+            HOD_profile="dummy";
         }
-        if(hod_alert==null)
+        if(Faculty_alert==null)
         {
-            hod_alert="dummy";
-        }
-
-        if(hod_profie==null)
-        {
-            hod_profie="dummy";
+            Faculty_alert="dummy";
         }
 
-        if (principal_alert.equals("pAlert"))
+        if(Faculty_profie==null)
+        {
+            Faculty_profie="dummy";
+        }
+
+        if (HOD_alert.equals("pAlert"))
         {
 
             final ArrayList parrayList = new ArrayList();
             String cols[] = {ld.EMAIL_COL, ld.DEPARTMENT_COL};
-            final String where = ld.STATUS_PRINCIPAL_COL + " = ? ";
+            final String where = ld.STATUS_HOD_COL + " = ? ";
             String where_args[] = {"pending"};
             Cursor c = sd.query(ld.LEAVE_TABLE, cols, where, where_args, null, null, null);
             int count = 0;
@@ -110,7 +110,7 @@ public class ViewApplicationList extends Activity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ContentValues cv = new ContentValues();
-                            cv.put(ld.STATUS_PRINCIPAL_COL, "approved");
+                            cv.put(ld.STATUS_HOD_COL, "approved");
                             String where = ld.EMAIL_COL + " = ?";
                             String where_args[] = {text};
                             int res = sd.update(ld.LEAVE_TABLE, cv, where, where_args);
@@ -118,8 +118,8 @@ public class ViewApplicationList extends Activity {
                             if (res != 0)
                             {
                                 Toast.makeText(ViewApplicationList.this, "Leave Application is approved", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(ViewApplicationList.this, WelcomePrincipal.class);
-                                i.putExtra("RESULT", principal_profile );
+                                Intent i = new Intent(ViewApplicationList.this, WelcomeHOD.class);
+                                i.putExtra("RESULT", HOD_profile );
                                 setResult(Activity.RESULT_OK, i);
                                 finish();
                                 dialog.dismiss();
@@ -131,15 +131,15 @@ public class ViewApplicationList extends Activity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ContentValues cv = new ContentValues();
-                            cv.put(ld.STATUS_PRINCIPAL_COL, "cancel");
+                            cv.put(ld.STATUS_HOD_COL, "cancel");
                             String where = ld.EMAIL_COL + " = ?";
                             String where_args[] = {text};
                             int res = sd.update(ld.LEAVE_TABLE, cv, where, where_args);
                             if (res != 0)
                             {
                                 Toast.makeText(ViewApplicationList.this, "Leave Application is Cancel", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(ViewApplicationList.this, WelcomePrincipal.class);
-                                i.putExtra("RESULT", principal_profile);
+                                Intent i = new Intent(ViewApplicationList.this, WelcomeHOD.class);
+                                i.putExtra("RESULT", HOD_profile);
                                 setResult(Activity.RESULT_OK, i);
                                 finish();
                                 dialog.dismiss();
@@ -157,11 +157,11 @@ public class ViewApplicationList extends Activity {
 
 
 
-        } else if (hod_alert.equals("hAlert"))
+        } else if (Faculty_alert.equals("hAlert"))
         {
 
             String cols[] = {ld.EMAIL_COL, ld.DEPARTMENT_COL};
-            final String where = ld.STATUS_HOD_COL + " = ? ";
+            final String where = ld.STATUS_Faculty_COL + " = ? ";
             String where_args[] = {"pending"};
             Cursor c = sd.query(ld.LEAVE_TABLE, cols, where, where_args, null, null, null);
             int count = 0;
@@ -195,14 +195,14 @@ public class ViewApplicationList extends Activity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ContentValues cv = new ContentValues();
-                            cv.put(ld.STATUS_HOD_COL, "approved");
+                            cv.put(ld.STATUS_Faculty_COL, "approved");
                             String where = ld.EMAIL_COL + " = ?";
                             String where_args[] = {text};
                             int res = sd.update(ld.LEAVE_TABLE, cv, where, where_args);
                             if (res != 0) {
                                 Toast.makeText(ViewApplicationList.this, "Leave Application is approved", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(ViewApplicationList.this, WelcomeHod.class);
-                                i.putExtra("RESULT", hod_profie);
+                                Intent i = new Intent(ViewApplicationList.this, WelcomeFaculty.class);
+                                i.putExtra("RESULT", Faculty_profie);
                                 setResult(Activity.RESULT_OK, i);
                                 finish();
                                 dialog.dismiss();
@@ -214,14 +214,14 @@ public class ViewApplicationList extends Activity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ContentValues cv = new ContentValues();
-                            cv.put(ld.STATUS_HOD_COL, "cancel");
+                            cv.put(ld.STATUS_Faculty_COL, "cancel");
                             String where = ld.EMAIL_COL + " = ?";
                             String where_args[] = {text};
                             int res = sd.update(ld.LEAVE_TABLE, cv, where, where_args);
                             if (res != 0) {
                                 Toast.makeText(ViewApplicationList.this, "Leave Application is Cancle", Toast.LENGTH_SHORT).show();
-                                Intent i = new Intent(ViewApplicationList.this, WelcomeHod.class);
-                                i.putExtra("RESULT", hod_profie);
+                                Intent i = new Intent(ViewApplicationList.this, WelcomeFaculty.class);
+                                i.putExtra("RESULT", Faculty_profie);
                                 setResult(Activity.RESULT_OK, i);
                                 finish();
                                 dialog.dismiss();

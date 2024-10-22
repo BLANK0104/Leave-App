@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class WelcomePrincipal extends AppCompatActivity {
+public class WelcomeHOD extends AppCompatActivity {
 
     TextView profile;
     String profileName;
@@ -25,7 +25,7 @@ public class WelcomePrincipal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome_principal);
+        setContentView(R.layout.activity_welcome_hod);
         profile = (TextView) findViewById(R.id.textviewUser);
 
 
@@ -65,7 +65,7 @@ public class WelcomePrincipal extends AppCompatActivity {
 
     public void viewProfile(MenuItem mi)
     {
-        Intent i=new Intent(this,PrincipalProfileUpdate.class);
+        Intent i=new Intent(this,HODProfileUpdate.class);
         i.putExtra("pemail",profileName);
         startActivity(i);
     }
@@ -78,18 +78,18 @@ public class WelcomePrincipal extends AppCompatActivity {
     }
 
 
-    public void viewHodP(View v)
+    public void viewFacultyP(View v)
     {
-        Intent i=new Intent(this,ViewHod.class);
-        i.putExtra("principal","principalAlert");
+        Intent i=new Intent(this,ViewFaculty.class);
+        i.putExtra("HOD","HODAlert");
         startActivity(i);
     }
 
 
-    public void  viewFacultyP(View v)
+    public void  viewStudentP(View v)
     {
-        Intent i=new Intent(this,ViewFaculty.class);
-        i.putExtra("principal","principalAlert");
+        Intent i=new Intent(this,ViewStudent.class);
+        i.putExtra("HOD","HODAlert");
         startActivity(i);
     }
 
@@ -100,8 +100,8 @@ public class WelcomePrincipal extends AppCompatActivity {
         if(!(count==0))
         {
             Intent intent=new Intent(this,ViewApplicationList.class);
-            intent.putExtra("principalAlert1",profileName);
-            intent.putExtra("principalAlert2","pAlert");
+            intent.putExtra("HODAlert1",profileName);
+            intent.putExtra("HODAlert2","pAlert");
             startActivity(intent);
         }else{
             AlertDialog.Builder ad = new AlertDialog.Builder(this);

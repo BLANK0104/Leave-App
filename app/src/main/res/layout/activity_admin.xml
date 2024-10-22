@@ -37,9 +37,9 @@
         android:layout_marginTop="20dp"
         android:background="@color/button_color"
         android:textColor="@color/text_color"
-        android:onClick="addPrincipal"
+        android:onClick="addHOD"
         android:textAllCaps="false"
-        android:text="Add Principal" />
+        android:text="Add HOD" />
 
     <Button
         android:id="@+id/button2"
@@ -47,8 +47,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@color/button_color"
-        android:onClick="viewHod"
-        android:text="View HOD"
+        android:onClick="viewFaculty"
+        android:text="View Faculty"
         android:textAllCaps="false"
         android:textColor="@color/text_color" />
 
@@ -57,9 +57,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@color/button_color"
-        android:text="View Faculty"
+        android:text="View Student"
         android:textColor="@color/text_color"
-        android:onClick="viewFaculty"
+        android:onClick="viewStudent"
         android:textAllCaps="false"
         />
    <!-- <Button

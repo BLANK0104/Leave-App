@@ -115,11 +115,11 @@ public class RegistrationActivity extends AppCompatActivity {
                                     cv.put(ld.EXPERIENCE_COL,exp);
                                     cv.put(ld.STATUS_COL,status);
 
-                                    if(type.equals("Principal")) {
+                                    if(type.equals("HOD")) {
                                         if(check.equals("ok")) {
-                                            long res = sd.insert(ld.PRINCIPAL_TABLE, null, cv);
+                                            long res = sd.insert(ld.HOD_TABLE, null, cv);
                                             if (res != -1) {
-                                                Snackbar.make(v,"Principal registered ",Snackbar.LENGTH_LONG).show();
+                                                Snackbar.make(v,"HOD registered ",Snackbar.LENGTH_LONG).show();
                                                 et_ame.setText("");
                                                 et_email.setText("");
                                                 et_pass.setText("");
@@ -133,43 +133,43 @@ public class RegistrationActivity extends AppCompatActivity {
                                                 Intent i = new Intent(this, MainActivity.class);
                                                 startActivity(i);
                                             } else {
-                                                Toast.makeText(this, "Error not inserted Principal in database", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(this, "Error not inserted HOD in database", Toast.LENGTH_SHORT).show();
                                                 finish();
                                                 Intent i = new Intent(this, AdminActivity.class);
                                                 startActivity(i);
                                             }
                                         } else {
-                                            Toast.makeText(this, "Not Allowed to Register the Principal", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(this, "Not Allowed to Register the HOD", Toast.LENGTH_SHORT).show();
                                             finish();
                                             Intent i = new Intent(this, MainActivity.class);
                                             startActivity(i);
                                         }
-                                    } else if(type.equals("Head Of Department")) {
-                                        long res = sd.insert(ld.HOD_TABLE, null, cv);
-                                        if (res != -1) {
-                                            et_ame.setText("");
-                                            et_email.setText("");
-                                            et_pass.setText("");
-                                            et_contact.setText("");
-                                            et_experience.setText("");
-                                            et_qualification.setText("");
-                                            profile_image.setImageResource(R.drawable.photo_camera);
-                                            bit = null;
-                                            et_ame.requestFocus();
-                                            Toast.makeText(this, "Successfully Registration of HOD ", Toast.LENGTH_SHORT).show();
-                                            finish();
-                                            Intent i=new Intent(this,MainActivity.class);
-                                            startActivity(i);
-                                        } else {
-                                            finish();
-                                            Intent i=new Intent(this,MainActivity.class);
-                                            startActivity(i);
-                                            Toast.makeText(this, "Error not inserted HOD", Toast.LENGTH_SHORT).show();
-                                        }
                                     } else if(type.equals("Faculty")) {
-                                        long res = sd.insert(ld.FACULTY_TABLE, null, cv);
+                                        long res = sd.insert(ld.Faculty_TABLE, null, cv);
                                         if (res != -1) {
+                                            et_ame.setText("");
+                                            et_email.setText("");
+                                            et_pass.setText("");
+                                            et_contact.setText("");
+                                            et_experience.setText("");
+                                            et_qualification.setText("");
+                                            profile_image.setImageResource(R.drawable.photo_camera);
+                                            bit = null;
+                                            et_ame.requestFocus();
                                             Toast.makeText(this, "Successfully Registration of Faculty ", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                            Intent i=new Intent(this,MainActivity.class);
+                                            startActivity(i);
+                                        } else {
+                                            finish();
+                                            Intent i=new Intent(this,MainActivity.class);
+                                            startActivity(i);
+                                            Toast.makeText(this, "Error not inserted Faculty", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else if(type.equals("Student")) {
+                                        long res = sd.insert(ld.Student_TABLE, null, cv);
+                                        if (res != -1) {
+                                            Toast.makeText(this, "Successfully Registration of Student ", Toast.LENGTH_SHORT).show();
                                             et_ame.setText("");
                                             et_email.setText("");
                                             et_pass.setText("");
@@ -183,7 +183,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                             Intent i=new Intent(this,MainActivity.class);
                                             startActivity(i);
                                         } else {
-                                            Toast.makeText(this, "Error not inserted Faculty", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(this, "Error not inserted Student", Toast.LENGTH_SHORT).show();
                                             finish();
                                             Intent i=new Intent(this,MainActivity.class);
                                             startActivity(i);

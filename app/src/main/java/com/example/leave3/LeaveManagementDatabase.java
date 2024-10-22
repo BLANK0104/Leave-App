@@ -13,9 +13,9 @@ public class LeaveManagementDatabase extends SQLiteOpenHelper
     public  static final  String DATABASE_NAME="LMS";
     public  static final  int  VERSION=1;
 
-    public  static final  String PRINCIPAL_TABLE="PRINCIPAL_DETAILS";
     public  static final  String HOD_TABLE="HOD_DETAILS";
-    public  static final  String FACULTY_TABLE="FACULTY_DETAILS";
+    public  static final  String Faculty_TABLE="Faculty_DETAILS";
+    public  static final  String Student_TABLE="Student_DETAILS";
     public  static final  String LEAVE_TABLE="LEAVE_DETAILS";
 
     public  static final  String NAME_COL="NAME";
@@ -32,8 +32,8 @@ public class LeaveManagementDatabase extends SQLiteOpenHelper
     public  static final  String LEAVE_REASON_COL="LEAVE_REASON";
     public  static final  String DATE_FROM_COL="DATE_FROM";
     public  static final  String DATE_TO_COL="DATE_TO";
+    public  static final  String STATUS_Faculty_COL="Faculty_LEAVE_STATUS";
     public  static final  String STATUS_HOD_COL="HOD_LEAVE_STATUS";
-    public  static final  String STATUS_PRINCIPAL_COL="PRINCIPAL_LEAVE_STATUS";
 
 
 
@@ -47,23 +47,23 @@ public class LeaveManagementDatabase extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        String query="create table "+PRINCIPAL_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
+        String query="create table "+HOD_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
         db.execSQL(query);
 
-        String query1="create table "+HOD_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
+        String query1="create table "+Faculty_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
         db.execSQL(query1);
 
-        String query2="create table "+FACULTY_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
+        String query2="create table "+Student_TABLE+" ( "+NAME_COL+" text,"+EMAIL_COL+" text Primary Key,"+PASSWORD_COL+" text,"+GENDER_COL+" text,"+contactNO_COL+" integer,"+QUALIFICATION_COL+" text,"+EXPERIENCE_COL+" text,"+STATUS_COL+" text,"+PHOTO_COL+" BLOB)";
         db.execSQL(query2);
 
-        String query3="create table "+LEAVE_TABLE+" ( "+EMAIL_COL+" text Primary Key  ,"+DEPARTMENT_COL+" text,"+LEAVE_REASON_COL+" text,"+DATE_FROM_COL+" text,"+DATE_TO_COL+" text,"+STATUS_HOD_COL+" text,"+STATUS_PRINCIPAL_COL+" text)";
+        String query3="create table "+LEAVE_TABLE+" ( "+EMAIL_COL+" text Primary Key  ,"+DEPARTMENT_COL+" text,"+LEAVE_REASON_COL+" text,"+DATE_FROM_COL+" text,"+DATE_TO_COL+" text,"+STATUS_Faculty_COL+" text,"+STATUS_HOD_COL+" text)";
         db.execSQL(query3);
 /*
 
         String department="";
         String leave_reason="";
-        String status_principal="pending";
-        String status_hod="pending";
+        String status_HOD="pending";
+        String status_Faculty="pending";
         String to_date="";
         String from_date="";
         ContentValues cv=new ContentValues();
@@ -72,8 +72,8 @@ public class LeaveManagementDatabase extends SQLiteOpenHelper
         cv.put(LEAVE_REASON_COL,leave_reason);
         cv.put(DATE_FROM_COL,to_date);
         cv.put(DATE_TO_COL,from_date);
-        cv.put(STATUS_HOD_COL,status_hod);
-        cv.put(STATUS_PRINCIPAL_COL,status_principal);
+        cv.put(STATUS_Faculty_COL,status_Faculty);
+        cv.put(STATUS_HOD_COL,status_HOD);
         long res=db.insert(LEAVE_TABLE,null,cv);
         if(res!=-1)
         {
@@ -89,9 +89,9 @@ public class LeaveManagementDatabase extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
         // on upgrade drop older tables
-        db.execSQL("DROP TABLE IF EXISTS " + PRINCIPAL_TABLE);
-        db.execSQL("DROP TABLE IF EXISTS " + FACULTY_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + HOD_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + Student_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + Faculty_TABLE);
 
         // create new table
         onCreate(db);
